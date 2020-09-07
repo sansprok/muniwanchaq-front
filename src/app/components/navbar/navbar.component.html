@@ -1,0 +1,104 @@
+<h1>CONSULTA DE ESTADO DE CUENTA</h1>
+<div>
+  <form class="form-row">
+
+    <div class="form-group col-md-2">
+      <label for="codigo" class="sr-only">CODIGO</label>
+      <input type="text" class="form-control" placeholder="CODIGO DE CONTRIBUYENTE" [(ngModel)]="codigo"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-dark" (click)="onAgregarPersona()">
+        BUSCAR
+      </button>
+    </div>
+  </form>
+  <div class="col-ms-4 offset-md">
+    <div class="card card-body">
+      <div class="row justify-content-md-center">
+        <div class="col">
+          <div class="col-md-12 ">
+            
+              <div class="col">
+                <div class="card card-body">
+                  <div class="form-group">
+                    <label class="text-secondary">Nombre Contribuyente </label><br>
+                    <label class="text-secondary"><strong>  {{nombrecompleto}}</strong></label>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">Direccion </label><br>
+                    <label class="text-secondary"><strong>  {{direccion}}</strong></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">Numero </label><br>
+                    <label class="text-secondary"><strong>  {{numero}}</strong></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">Fecha </label><br>
+                    <label class="text-secondary"><strong>  {{fechacorta }}</strong></label>
+                  </div>
+                </div>
+                <div class="card card-body">
+                  <div class="form-group">
+                    <label class="text-secondary">INSOLUTO </label><br>
+                    <label class="text-secondary"><strong>  {{deudatotal | number:'1.0-2'}}</strong></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">GASTO ADMINISTRATIVO </label><br>
+                    <label class="text-secondary"><strong>  {{gasadmitotal | number:'1.0-2'}}</strong></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">MORA </label><br>
+                    <label class="text-secondary"><strong>  {{moratotal | number:'1.0-2'}}</strong></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-secondary">TOTAL </label><br>
+                    <label class="text-secondary"><strong>  {{totaltotal | number:'1.0-2' }}</strong></label>
+                  </div>
+                </div>
+
+              </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <div class="col-sm-12 offset-md-12">
+            <div class="card card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center">ANIO</th>
+                      <th>TRIBUTO</th>
+                      <th>DEUDA</th>
+                      <th>GASADMIN</th>
+                      <th>MORA</th>
+                      <th>TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of resultadoconsutla">
+                      <td class="text-center">{{row.ANIO}}</td>
+                      <td>{{row.TRIBUTO}}</td>
+                      <td>{{row.DEUDA | number:'1.0-2'}}</td>
+                      <td>{{row.GASADMIN | number:'1.0-2'}}</td>
+                      <td>{{row.MORA | number:'1.0-2'}}</td>
+                      <td>{{row.DEUDA+row.GASADMIN+row.MORA | number:'1.0-2'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
