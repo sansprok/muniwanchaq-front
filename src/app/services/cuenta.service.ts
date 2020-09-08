@@ -10,7 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class CuentaService {
 
-  BASE_URL: string = 'https://wanchaqestadocuenta.herokuapp.com/';
+  BASE_URL: string = 'http://localhost:3000';
+  //BASE_URL: string = 'https://wanchaqestadocuenta.herokuapp.com/';
+
   //BASE_URL: string = '';
   //BASE_URL: string = '';
   //--proxy-config proxy.conf.json (comando para adionar en el start de package.json)
